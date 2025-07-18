@@ -10,5 +10,6 @@ COPY . .
 COPY wait-for-it.sh /wait-for-it.sh
 RUN chmod +x /wait-for-it.sh
 EXPOSE 3001
-CMD ["/wait-for-it.sh", "mysql:3306", "--", "node", "app.js"]
+#CMD ["/wait-for-it.sh", "mysql:3306", "--", "node", "app.js"]
+CMD /wait-for-it.sh "${DB_HOST}:${DB_PORT}" -- node app.js
 
